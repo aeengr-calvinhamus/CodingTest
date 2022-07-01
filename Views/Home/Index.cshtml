@@ -1,8 +1,40 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+	ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="text-left">
+	<h1>Index</h1>
+	<p><a asp-action="Create">Create New</a></p>
+	<table id="DisplayTable" width="50%">
+		<tr style="border-bottom: 1px solid">
+			<th>Name</th>
+			<th>Address</th>
+			<th></th>
+		</tr>
+		@{
+			if (CodingTest.Controllers.HomeController.GetEmployees().Count <= 0)
+			{
+				<tr>
+					<td>No</td>
+					<td>Entries</td>
+					<td></td>
+				</tr>
+			}
+			else
+			{
+				foreach (Employee _employee in CodingTest.Controllers.HomeController.GetEmployees())
+				{
+					<tr style="border-bottom: 1px solid darkgray">
+						<td>@_employee.Name</td>
+						<td>@_employee.Address</td>
+						<td>
+							<a asp-action="Edit" asp-route-employeeid="@_employee.EmployeeId">Edit</a> |
+							<a asp-action="Employee" asp-route-employeeid="@_employee.EmployeeId">Details</a> |
+							<a asp-action="Delete" asp-route-employeeid="@_employee.EmployeeId">Delete</a>
+						</td>
+					</tr>
+				}
+			}
+		}
+	</table>
 </div>

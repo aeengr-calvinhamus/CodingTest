@@ -6,6 +6,7 @@
         public string Name { get; set; }
         public string Address { get; set; }
 
+        // Added for Sort method used in Repository
         public int CompareTo(Employee? other)
         {
             if (other == null)
@@ -18,6 +19,7 @@
             }
         }
 
+        // Added for Remove method in Repository
         public bool Equals(Employee? other)
         {
             if (other == null)

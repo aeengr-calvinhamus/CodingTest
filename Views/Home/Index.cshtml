@@ -12,6 +12,7 @@
 			<th></th>
 		</tr>
 		@{
+			// Case for no Employees in "DB"
 			if (CodingTest.Controllers.HomeController.GetEmployees().Count <= 0)
 			{
 				<tr>
@@ -22,6 +23,7 @@
 			}
 			else
 			{
+				// Fetches the list of all Employees and loops through to add all to the table
 				foreach (Employee _employee in CodingTest.Controllers.HomeController.GetEmployees())
 				{
 					<tr style="border-bottom: 1px solid darkgray">

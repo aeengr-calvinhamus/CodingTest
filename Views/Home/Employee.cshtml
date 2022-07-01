@@ -12,6 +12,7 @@
 	@{
 		if (Context.Request.Query["employeeid"].Count > 0)
 		{
+			// Pulls the current EmployeeId from the URL Query, then fetches the Employee object
 			Employee? _employee = CodingTest.Controllers.HomeController.GetEmployee(int.Parse(Context.Request.Query["employeeid"][0]));
 			if (_employee == null)
 			{
